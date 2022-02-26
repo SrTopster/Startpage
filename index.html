@@ -100,6 +100,19 @@
             position: absolute;
             bottom: 15px;
             }
+            #engine
+            {
+            position: absolute;
+            left: 320px;
+            bottom: 15px;
+            border-radius: 5px;
+            border: 2px solid white;
+            background-color: rgb(0, 0, 0,0.0);
+            color:gray;
+            }
+            #engine:hover{
+            border: 2px solid red;
+            }
             #img
             {
             position: absolute;
@@ -115,18 +128,12 @@
     </head>
     <body style="background-color:black;">
         <h1 class= "strokeme" style="color: white;margin-bottom: 5px;font-size: 35px;">Welcome home Topster_</h1>
-        <div class="strokemelink">
-            <a href="https://www.google.com">Google<br></a>
-            <a href="https://www.youtube.com">Youtube<br></a>
-            <a href="https://discord.com/activity">Discord<br></a>
-            <a href="https://steamcommunity.com/id/topster_/">Steam<br></a>
-            <a href="https://twitter.com/home">Twitter<br></a>
-            <a href="https://www.twitch.tv/">Twitch<br></a>
-	    <a href="https://www.4chan.org/">4chan</a>
+        <div id="links" class="strokemelink">
         </div>
-        <form action="https://www.google.com/search" method="GET">
+        <form id="search" action="https://www.google.com/search" method="GET">
             <input type="text" placeholder="Google Search" id="q" autocomplete="off" name="q">
         </form>
+        <button id="engine" onclick="engine()">Engine</button>
         <img id="img" onclick="changeimage()" src="webp/1.webp">
         <a href="https://www.youtube.com/watch?v=Tiqxn3iOmxY">
             <button id="stuff">Good Stuff</button>
@@ -135,38 +142,37 @@
             <div id="clock">13:37:42</div>
         </a>
         <script>
-            var image =  document.getElementById("img");
+            //Link builder
+            var webs = {"Youtube":"https://www.youtube.com","Discord":"https://discord.com/activity","Steam":"https://steamcommunity.com/id/topster_/","Twitter":"https://twitter.com/home","Twitch":"https://www.twitch.tv/","4chan":"https://www.4chan.org/"}
+            for (var prop in webs){
+                var a = document.createElement("a");
+                a.innerHTML = prop+"<br>";
+                a.href = webs[prop];
+                document.getElementById("links").appendChild(a);
+            }
+            //Image chager
+            var image = document.getElementById("img");
+            var clicks = 1
             function changeimage(){
-                if (image.getAttribute('src') == "webp/1.webp") {
-                    image.src = "webp/2.webp";
-                    return;
-                }
-                if (image.getAttribute('src') == "webp/2.webp") {
-                    image.src = "webp/3.webp";
-                    return;
-                }
-                if (image.getAttribute('src') == "webp/3.webp") {
-                    image.src = "webp/4.webp";
-                    return;
-                }
-                if (image.getAttribute('src') == "webp/4.webp") {
-                    image.src = "webp/5.webp";
-                    return;
-                }
-                if (image.getAttribute('src') == "webp/5.webp") {
-                    image.src = "webp/6.webp";
-                    return;
-                }
-                if (image.getAttribute('src') == "webp/6.webp") {
-                    image.src = "webp/7.webp";
-                    return;
-                }
-                if (image.getAttribute('src') == "webp/7.webp") {
-                    image.src = "webp/1.webp";
+                if (clicks == 8){
+                    clicks = 1;
                     document.getElementById("stuff").style.visibility = "visible";
-                    return;
+                }
+                image.src = "webp/"+clicks+".webp";
+                clicks += 1;
+            }
+            function engine(){
+                search = document.getElementById("search")
+                if (search.action == "https://www.google.com/search"){
+                    search.action = "https://duckduckgo.com/"
+                    document.getElementById("q").placeholder = "DuckDuckGo Search"
+                }
+                else{
+                    search.action = "https://www.google.com/search"
+                    document.getElementById("q").placeholder = "Google Search"
                 }
             }
+            //Clock
             setInterval(showTime, 1000);
 		    function showTime() {
                 let time = new Date();
@@ -187,7 +193,3 @@
         </script>
     </body>
 </html>
-
-
-
-<!--  <a href="https://www.youtube.com/watch?v=Tiqxn3iOmxY"><img onmouseover="this.style.border='1px solid white'" onmouseout="this.style.border='1px solid black'" style="position: absolute;top: 25px; right: 10px;border: 1px solid black;" src="better.gif"></a> -->
