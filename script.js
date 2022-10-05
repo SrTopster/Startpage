@@ -6,6 +6,14 @@ var webs = {"Youtube":"https://www.youtube.com",
 "Twitch":"https://www.twitch.tv/",
 "4chan":"https://www.4chan.org/"}
 
+//search engines
+var search_engines = {"Google Search":"https://www.google.com/search",
+"DuckDuckGo Search":"https://duckduckgo.com/",
+"YouTube Search":"https://youtube.com/search"}
+
+var search_engines_len = Object.keys(search_engines).length
+var current_search_engine = 0
+
 for (var link in webs){
     var a = document.createElement("a");
     a.innerHTML = link+"<br>";
@@ -24,17 +32,17 @@ function changeimage(){
     clicks += 1;
 }
 //Engine changer
-function engine(){
+function engine_changer(){   
     search = document.getElementById("search")
-    if (search.action == "https://www.google.com/search"){
-        search.action = "https://duckduckgo.com/"
-        document.getElementById("q").placeholder = "DuckDuckGo Search"
+    search_input = document.getElementById("search_input")
+    current_search_engine += 1
+    if (current_search_engine > search_engines_len-1) {
+        current_search_engine = 0
     }
-    else{
-        search.action = "https://www.google.com/search"
-        document.getElementById("q").placeholder = "Google Search"
-    }
+    search.action = Object.values(search_engines)[current_search_engine]
+    search_input.placeholder = Object.keys(search_engines)[current_search_engine]
 }
+
 //Clock
 setInterval(showTime, 1000);
 function showTime() {
