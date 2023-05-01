@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="stylesheet" href="/style.css">
+    <title>QR Code</title>
+    <style>
+        .cool_button {
+            color: red;
+            background-color: rgba(0, 0, 0, 0.7);
+            width: 80px;
+        }
+        .cool_input {
+            width: 300px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        #qrcode_size {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 300px;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 15px;
+            border-radius: 5px;  
+            background: #ff0000;
+            outline: none;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%; 
+            background: red;
+            cursor: pointer;
+        }
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%; 
+            background: red;
+            cursor: pointer;
+        }
+        #qrcode {
+            position: absolute;
+            top: 10px;
+            left: 350px;
+        }
+    </style>
+</head>
+<body>
+    <textarea id="in1" class="cool_input" rows=10>https://thepatriots.neocities.org/qrcode</textarea><br>
+    <button id="b1" class="cool_button cool_hover">Generate</button><br>
+    <input class="slider" type="range" min=64 max=1024 step=2 value=256 id="qrcode_size">
+    <div id="qrcode"></div>
+</body>
+<script src="/qrcode/qrcode.js"></script>
+<script>
+    function create_qrcode(qr_text) {
+        if (qr_text == "") {
+            return
+        }
+        document.getElementById("qrcode").innerHTML = ""
+        var qrcode = new QRCode("qrcode",{
+            width: qrcode_size.value,
+            height: qrcode_size.value
+        }) 
+        qrcode.makeCode(qr_text)
+    }
+    qrcode_size = document.getElementById("qrcode_size")
+    qr_text = document.getElementById("in1")
+    qrcode_size.oninput = function() {
+        create_qrcode(qr_text.value)
+    }
+    document.getElementById("b1").onclick = function() {
+        create_qrcode(qr_text.value)
+    }
+    create_qrcode(qr_text.value)
+</script>
+</html>

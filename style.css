@@ -65,21 +65,10 @@ body {
     position: absolute;
     right: 220px;
     bottom: 15px;
-    border-radius: 5px;
-    border: 2px solid white;
-    background-color: rgb(0, 0, 0,0.0);
-    color:gray;
     visibility: hidden;
 }
-#stuff:hover{
-    border: 2px solid red;
-}
 #search_input {
-    background-color: rgb(0, 0, 0,0.0);
-    color: red;
     width: 300px;
-    border-radius: 5px;
-    border: 2px solid white;
     position: absolute;
     bottom: 15px;
 }
@@ -87,13 +76,6 @@ body {
     position: absolute;
     left: 320px;
     bottom: 15px;
-    border-radius: 5px;
-    border: 2px solid white;
-    background-color: rgb(0, 0, 0,0.0);
-    color:gray;
-}
-#engine:hover{
-    border: 2px solid red;
 }
 #img {
     position: absolute;
@@ -103,4 +85,19 @@ body {
 }
 #img:hover {
     border: 1px solid red;
+}
+.cool_input {
+    background-color: rgb(0, 0, 0,0.0);
+    color: red;
+    border-radius: 5px;
+    border: 2px solid white
+}
+.cool_button {
+    color:gray;
+    background-color: rgb(0, 0, 0,0.0);
+    border: 2px solid white;
+    border-radius: 5px;
+}
+.cool_hover:hover {
+    border: 2px solid red;
 }
