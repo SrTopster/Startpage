@@ -4,7 +4,8 @@ var webs = {"Youtube":"https://www.youtube.com",
 "Steam":"https://steamcommunity.com/id/topster_/",
 "Twitter":"https://twitter.com/home",
 "Twitch":"https://www.twitch.tv/",
-"4chan":"https://www.4chan.org/"}
+"4chan":"https://www.4chan.org/",
+"QRCode":"/qrcode"}
 
 //search engines
 var search_engines = {"Google Search":"https://www.google.com/search",
